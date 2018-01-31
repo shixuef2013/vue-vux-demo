@@ -26,13 +26,13 @@
           fallbackSrc: 'http://placeholder.qiniudn.com/60x60/3cc51f/ffffff',
           title: '可乐',
           desc: '最好喝的可口可乐  ￥2.00 + 积分2点',
-          url: '/component/cell'
+          url: '/giftPay'
         }, {
           src: 'http://placeholder.qiniudn.com/60x60/3cc51f/ffffff',
           title: '雪碧',
           desc: '最爽口的冰凉雪碧  ￥5.00 + 积分10点',
           url: {
-            path: '/component/radio',
+            path: '/giftPay',
             replace: false
           },
           meta: {

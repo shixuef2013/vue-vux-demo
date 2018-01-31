@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import HelloWorld from '@/components/HelloWorld'
 import giftList from '@/components/zcb/GiftList'
+import giftPay from '@/components/zcb/Pay'
 import registerMember from '@/components/zcb/RegisterMember'
 import editorMember from '@/components/zcb/EditorMember'
 
@@ -16,6 +17,10 @@ export default new Router({
       path: '/giftList',
       name: 'giftList',
       component: giftList
+    }, {
+      path: '/giftPay',
+      name: 'giftPay',
+      component: giftPay
     }, {
       path: '/registerMember',
       name: 'registerMember',
