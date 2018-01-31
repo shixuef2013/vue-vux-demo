@@ -54,9 +54,20 @@
     },
     computed: {
     },
+    attached: {
+    },
     methods: {
-      tabbaeIndexChange (index) {
-        this.headerTitle = this.bottomMenu[index]
+      /**
+       * tabbar切换
+       * @param newIndex
+       * @param oldIndex
+       */
+      tabbaeIndexChange (newIndex, oldIndex) {
+        this.headerTitle = this.bottomMenu[newIndex]
+        if (newIndex === 0) {
+          this.$router.push(this.tabbarRouter.saleHallMap)
+        }
+        console.log('导航切换：', oldIndex, newIndex)
       }
     }
   }

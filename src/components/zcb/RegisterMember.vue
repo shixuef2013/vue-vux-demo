@@ -12,7 +12,7 @@
       <x-button v-else slot="right" type="warn" :disabled="countDownStart" mini @click.native="sendMsgCode">{{sendMsgButtonLabel}}</x-button>
     </x-input>
   </group>
-  <countdown hidden v-model="countDownTime" :start="countDownStart" @on-finish="countDownFinish"></countdown>
+  <countdown hidden end-val="1" v-model="countDownTime" :start="countDownStart" @on-finish="countDownFinish"></countdown>
   <x-button type="warn" :show-loading="submitLoading" :disabled="submitLoading" @click.native="submitRegister">注册</x-button>
 </div>
 </template>
@@ -39,11 +39,11 @@
       countDownFinish (index) {
         this.countDownStart = false
         this.countDownTime = 59
-        this.sendMsgButtonLabel = '重新获取验证码'
+        this.sendMsgButtonLabel = '重新获取'
         console.log('倒计时结束！！')
       },
       sendMsgCode () {
-        this.sendMsgButtonLabel = ' 秒后重新获取验证码'
+        this.sendMsgButtonLabel = ' 秒后重新获取'
         this.countDownStart = true
         console.log('获取验证码按钮！！')
       },
