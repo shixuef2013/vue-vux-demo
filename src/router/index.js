@@ -1,8 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import HelloWorld from '@/components/HelloWorld'
-import VuxHome from '@/components/HelloFromVux'
-import zcbIndex from '@/components/zcb/index'
+import registerMember from '@/components/zcb/RegisterMember'
+import editorMember from '@/components/zcb/editorMember'
 
 Vue.use(Router)
 export default new Router({
@@ -12,13 +12,13 @@ export default new Router({
       name: 'HelloWorld',
       component: HelloWorld
     }, {
-      path: '/vux',
-      name: 'HelloWorldVux',
-      component: VuxHome
+      path: '/registerMember',
+      name: 'registerMember',
+      component: registerMember
     }, {
-      path: '/zcb',
-      name: 'ZcbIndex',
-      component: zcbIndex
+      path: '/editorMember',
+      name: 'editorMember',
+      component: editorMember
     }
   ]
 })
