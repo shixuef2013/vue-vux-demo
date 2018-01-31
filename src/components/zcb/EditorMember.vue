@@ -9,16 +9,16 @@
       <x-input v-model="formParam.address"></x-input>
     </group>
 
-    <group title="邮箱">
-      <x-input v-model="formParam.email" is-type="email"></x-input>
+    <group>
+      <x-input title="邮箱" v-model="formParam.email" is-type="email"></x-input>
     </group>
 
-    <group title="QQ">
-      <x-input v-model="formParam.qq" keyboard="number"></x-input>
+    <group>
+      <x-input title="QQ" v-model="formParam.qq" keyboard="number"></x-input>
     </group>
 
-    <group title="微博">
-      <x-input v-model="formParam.weibo"></x-input>
+    <group>
+      <x-input title="微博" v-model="formParam.weibo"></x-input>
     </group>
 
     <group title="职业">
@@ -31,6 +31,7 @@
       <selector placeholder="请选择" v-model="formParam.referrer_type" name="district" :options="refers" @on-change="referChange"></selector>
     </group>
 
+    <group></group>
     <x-button type="warn" :show-loading="submitLoading" @click.native="logInfo">保存</x-button>
   </div>
 </template>

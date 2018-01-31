@@ -50,6 +50,7 @@
       submitRegister () {
         console.log('注册提交按钮！！！')
         this.submitLoading = true
+        this.$router.push('/editorMember')
       }
     }
   }

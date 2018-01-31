@@ -1,9 +1,8 @@
 const RouterPath = {
   Navigator: {
     saleHallMap: '/',
-    giftList: '/registerMember',
+    giftList: '/giftList',
     member: '/registerMember'
-      // '/editorMember'
   }
 }
 
