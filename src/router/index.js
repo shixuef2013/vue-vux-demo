@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import HelloWorld from '@/components/HelloWorld'
+import bmapComp from '@/components/zcb/BMapComponent'
 import giftList from '@/components/zcb/GiftList'
 import giftPay from '@/components/zcb/Pay'
 import registerMember from '@/components/zcb/RegisterMember'
@@ -11,8 +11,8 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'HelloWorld',
-      component: HelloWorld
+      name: 'bmapComp',
+      component: bmapComp
     }, {
       path: '/giftList',
       name: 'giftList',
