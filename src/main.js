@@ -5,9 +5,11 @@ import FastClick from 'fastclick'
 import router from './router/index'
 import App from './App'
 import {BusPlugin} from 'vux'
+import Vuex from 'vuex'
 // import VueRouter from 'vue-router'
 
 Vue.use(BusPlugin)
+Vue.use(Vuex)
 // Vue.use(VueRouter)
 FastClick.attach(document.body)
 Vue.config.productionTip = false
