@@ -1,69 +1,80 @@
 <template>
-  <div>
-    <!--header-->
-    <!--<com-header :title="headerData.title" :toLink="headerData.toLink"></com-header>-->
-    <!--header end-->
+  <baidu-map class="map" :center="center" :zoom="zoom" :map-type="mapType" :scroll-wheel-zoom="scrollWheelZoom" @ready="handler">
+    <!--比例尺-->
+    <bm-scale anchor="BMAP_ANCHOR_BOTTOM_LEFT"></bm-scale>
+    <!--缩放图标-->
+    <bm-navigation anchor="BMAP_ANCHOR_BOTTOM_RIGHT" :showZoomInfo="showZoomInfo"></bm-navigation>
+    <!--地图类型-->
+    <!--<bm-map-type :map-types="['BMAP_NORMAL_MAP', 'BMAP_HYBRID_MAP']" anchor="BMAP_ANCHOR_TOP_RIGHT"></bm-map-type>-->
+    <!--定位-->
+    <bm-geolocation anchor="BMAP_ANCHOR_TOP_RIGHT" :showAddressBar="true" :autoLocation="true"></bm-geolocation>
 
-    <!--container-->
-    <div id="allmap"
-         style="
-                width: 100%
-                height:100%
-                border: 1px solid gray
-                overflow:hidden">
-    </div>
-
-    <!--container end-->
-  </div>
+    <bm-marker :position="{lng: 116.404, lat: 39.915}" :dragging="false" animation="BMAP_ANIMATION_BOUNCE" @click="onClickMarker">
+      <!--:icon="{url: '@/assets/zcb/gift.png', size: {width: 300, height: 157}}"-->
+      <!--<bm-label content="我爱北京天安门" :labelStyle="{color: 'red', fontSize : '24px'}" :offset="{width: -35, height: 30}"/>-->
+      <bm-info-window :show="show" @close="infoWindowClose" @open="infoWindowOpen">我爱北京天安门</bm-info-window>
+    </bm-marker>
+  </baidu-map>
 </template>
-<script>
-  // import comHeader from 'components/comHeader'
-  import BMap from 'BMap'
 
+
+<script>
   export default {
-    components: {
-      // comHeader
-    },
-    data: () => ({
-      headerData: {
-        title: '网点详情',
-        toLink: '/SalesOutlets'
+    components: {},
+    data () {
+      return {
+        // 初始化中心点
+        center: {lng: 116.404, lat: 39.915},
+        // 缩放等级
+        zoom: 15,
+        // 地图类型
+        mapType: 'BMAP_NORMAL_MAP',
+        // 鼠轮缩放
+        scrollWheelZoom: true,
+        // 缩放显示级别提示信息
+        showZoomInfo: true,
+        // 平移缩放控件的类型
+        navigationControlType: 'NavigationControlType.BMAP_NAVIGATION_CONTROL_LARGE',
+        show: false
       }
-    }),
+    },
     created () {
-      // 组件创建完后获取数据，这里和1.0不一样，改成了这个样子
-      this.loadMap()
-      // this.ready() // 如果在此处直接调用this.ready()方法，将无法加载地图
     },
     mounted () {
-      this.ready()
     },
     methods: {
-      loadMap: function () {
-        console.log(this.$route.params.name)
-        console.log(this.$route.params.addr)
-        console.log(this.$route.params.phone)
-        // setTimeout(this.ready, 0)
+      handler ({BMap, map}) {
+        console.log(BMap, map)
       },
-      ready: function () {
-        // 百度地图API功能
-        var map = new BMap.Map('allmap')    // 创建Map实例
-        map.centerAndZoom(new BMap.Point(116.404, 39.915), 11)  // 初始化地图,设置中心点坐标和地图级别
-        // 添加地图类型控件
-        map.addControl(new BMap.MapTypeControl({
-          mapTypes:[
-            BMAP_NORMAL_MAP,
-            BMAP_HYBRID_MAP
-          ]}))
-        map.setCurrentCity("北京")          // 设置地图显示的城市 此项是必须设置的
-        map.enableScrollWheelZoom(true)     //开启鼠标滚轮缩放
+      onClickMarker ({type, target}) {
+        console.log(type, target)
+        this.show = !this.show
+      },
+      /**
+       * windowInfo显示时回调
+       */
+      infoWindowOpen () {
+        console.log('open')
+      },
+      /**
+       * windowInfo关闭时回调
+       */
+      infoWindowClose () {
+        console.log('close')
       }
     }
   }
 </script>
 <style>
-  /* 去掉地图左下角的百度LOGO */
+  /*
+  去掉地图左下角的百度LOGO
+   */
   .anchorBL {
     display: none
+  }
+
+  .map {
+    width: 100%;
+    height: 100%;
   }
 </style>
